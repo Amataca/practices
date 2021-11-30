@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"gitlab.com/Amataca/go-programming/003-Paquetes/gato"
+	"github.com/Amataca/practices/002-paquetes/gato"
 )
 
 func main() {
