@@ -1,6 +1,9 @@
 package users
 
-import "math/rand"
+import (
+	"fmt"
+	"math/rand"
+)
 
 type User struct {
 	Id   int
@@ -20,4 +23,8 @@ func NewEmployee(name string) *Employee {
 		},
 		active: true,
 	}
+}
+
+func Minombre() {
+	fmt.Println("Carlos")
 }

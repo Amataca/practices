@@ -9,4 +9,5 @@ import (
 func main() {
 	frank := users.NewEmployee("Frank")
 	fmt.Println(frank)
+	users.Minombre()
 }
