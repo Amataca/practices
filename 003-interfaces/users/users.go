@@ -12,7 +12,16 @@ type User struct {
 
 type Employee struct {
 	User
-	active bool
+	Active bool
+}
+
+type Cashier interface {
+	CalclTotal(item ...float32) float32
+	deactivate()
+}
+
+type Admin interface {
+	DeactivateEmployee(c Cashier)
 }
 
 func NewEmployee(name string) *Employee {
@@ -21,10 +30,30 @@ func NewEmployee(name string) *Employee {
 			Id:   rand.Intn(1000),
 			Name: name,
 		},
-		active: true,
+		Active: true,
 	}
 }
 
-func Minombre() {
-	fmt.Println("Carlos")
+func (e *Employee) CalclTotal(item ...float32) float32 {
+
+	if !e.Active {
+		fmt.Println("Cashier deactive")
+		return 0
+	}
+
+	var sum float32
+
+	for _, i := range item {
+		sum += i
+	}
+
+	return sum * 1.15
+}
+
+func (e *Employee) deactivate() {
+	e.Active = false
+}
+
+func (e *Employee) DeactivateEmployee(c Cashier) {
+	c.deactivate()
 }
