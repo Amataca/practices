@@ -1,79 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
 
-type Car struct {
-	Model  int
-	Color  string
-	Engine CarEngine
-	Line   *Line
-}
+	us "github.com/practices/015-structs/User"
+)
 
-type Line struct {
-	LineName string
-}
-
-type CarEngine struct {
-	Version int
+type pepe struct {
+	us.Usuario
 }
 
 func main() {
-	car := new(Car) //devuelve pointer
-	car2 := Car{
-		Model: 2019,
-		Color: "Red",
-		Engine: CarEngine{
-			Version: 8,
-		},
-		Line: &Line{
-			LineName: "trend line",
-		},
-	}
-	car3 := r(2020, "azul", 10)
-	car4 := rr(2021, "azul", 11)
+	u := new(pepe)
+	u.AltaUsuario(1, "Pablo Tilota", time.Now(), true)
 
-	fmt.Printf("%v", car)
-	fmt.Println()
-	fmt.Printf("%v", car2)
-	fmt.Println()
-	fmt.Printf("%v", car3)
-	fmt.Println()
-	fmt.Printf("%v", car4)
-
-	car3 = car2
-	car5 := &car3
-	/* car3 = car2 */
-	fmt.Println()
-	fmt.Printf("%v", car5)
-	/* fmt.Println()
-	fmt.Printf("%v", &car5) */
-	fmt.Println()
-	fmt.Printf("%v", car3)
-
-}
-
-func r(m int, c string, e int) Car {
-	return Car{
-		Model: m,
-		Color: c,
-		Engine: CarEngine{
-			Version: e,
-		},
-		Line: &Line{
-			LineName: "trend line",
-		},
-	}
-}
-
-func rr(m int, c string, e int) *Car {
-	return &Car{
-		Model: m,
-		Color: c,
-		Engine: CarEngine{
-			Version: e,
-		},
-		Line: &Line{
-			LineName: "trend line",
-		},
-	}
+	//Vista de heredados de Usuario
+	fmt.Println(u.Nombre)
+	fmt.Println(u.Status)
+	fmt.Println(u.Usuario)
 }
